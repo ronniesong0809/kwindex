@@ -1,9 +1,9 @@
 #[derive(Debug, Default, Clone)]
-pub struct KWIndex<'a str> {
+pub struct KWIndex<'a> {
     word: Vec<&'a str>,
 }
 
-impl<'a str> KWIndex<'a str> {
+impl<'a> KWIndex<'a> {
     // Make a new empty target words list.
     pub fn new() -> Self {
         let word = Vec::new();
@@ -27,11 +27,11 @@ impl<'a str> KWIndex<'a str> {
     // Count the number of words that are indexed by this
     // `KWIndex`.
     pub fn len(&self) -> usize {
-        self.len()
+        self.word.len()
     }
 
     // Is this index empty?
     pub fn is_empty(&self) -> bool {
-        self.len()==0
+        self.word.len()==0
     }
 }
