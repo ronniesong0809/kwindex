@@ -1,7 +1,8 @@
 extern crate kwindex;
 
 fn main() {
-    let index = kwindex::KWIndex::new();
-    print!("{}", index.len());
-    print!("{}", index.count_matches("world"));
+    let mut index = kwindex::KWIndex::new();
+    index = index.extend_from_text("Hey world");
+    println!("len(): {}", index.len());
+    println!("cout_matches(): {}", index.count_matches("world"));
 }
