@@ -14,9 +14,12 @@ impl<'a> KWIndex<'a> {
     // Parse the `target` text and add the sequence of
     // valid words contained in it to this `KWIndex`
     // index.
-    // pub fn extend_from_text(mut self, target: &'a str) -> Self {
-
-    // }
+    pub fn extend_from_text(mut self, target: &'a str) -> Self {
+        for i in target.split_whitespace() {
+            self.word.push(i);
+        }
+        self
+    }
 
     // Count the number of occurrences of the given `keyword`
     // that are indexed by this `KWIndex`.
