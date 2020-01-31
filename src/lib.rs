@@ -20,9 +20,19 @@ impl<'a> KWIndex<'a> {
 
     // Count the number of occurrences of the given `keyword`
     // that are indexed by this `KWIndex`.
-    // pub fn count_matches(&self, keyword: &str) -> usize {
+    pub fn count_matches(&self, keyword: &str) -> usize {
+        if self.is_empty() {
+            return 0;
+        }
 
-    // }
+        let mut counter = 0;
+        for i in &self.word {
+            if i == & keyword {
+                counter += 1;
+            }
+        }
+        counter
+    }
 
     // Count the number of words that are indexed by this
     // `KWIndex`.
