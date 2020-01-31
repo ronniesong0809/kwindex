@@ -18,8 +18,14 @@ impl<'a> KWIndex<'a> {
             let mut temp = i;
             for j in i.chars() {
                 if !j.is_alphabetic() {
-                    println!("[{}] is removed", j);
-                    temp = i.trim_matches(|c: char| c == ',' || c == '.' || c == '!' || c == '?');
+                    // check if j is the last char in word
+                    if i.chars().last().unwrap() == j {
+                        println!("[{}] is removed from [{}]", j, i);
+                        // temp = i.trim_matches(|c: char| c == ',' || c == '.' || c == '!' || c == '?');
+                        temp = i.trim_matches(|c: char| c == j);
+                    } else {
+                        temp = "";
+                    }
                 }
             }
             println!("[{}] is add to KWIndex index", temp);
