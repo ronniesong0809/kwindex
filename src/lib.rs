@@ -8,7 +8,6 @@ impl<'a> KWIndex<'a> {
     pub fn new() -> Self {
         let word = Vec::new();
         Self { word }
-
     }
 
     // Parse the `target` text and add the sequence of
@@ -16,7 +15,15 @@ impl<'a> KWIndex<'a> {
     // index.
     pub fn extend_from_text(mut self, target: &'a str) -> Self {
         for i in target.split_whitespace() {
-            self.word.push(i);
+            let mut temp = i;
+            for j in i.chars() {
+                if !j.is_alphabetic() {
+                    println!("[{}] is removed", j);
+                    temp = i.trim_matches(|c: char| c == ',' || c == '.' || c == '!' || c == '?');
+                }
+            }
+            println!("[{}] is add to KWIndex index", temp);
+            self.word.push(temp);
         }
         self
     }
@@ -30,7 +37,7 @@ impl<'a> KWIndex<'a> {
 
         let mut counter = 0;
         for i in &self.word {
-            if i == & keyword {
+            if i == &keyword {
                 counter += 1;
             }
         }
@@ -45,6 +52,6 @@ impl<'a> KWIndex<'a> {
 
     // Is this index empty?
     pub fn is_empty(&self) -> bool {
-        self.word.len()==0
+        self.word.len() == 0
     }
 }
