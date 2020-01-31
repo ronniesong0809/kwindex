@@ -16,20 +16,41 @@ impl<'a> KWIndex<'a> {
     pub fn extend_from_text(mut self, target: &'a str) -> Self {
         for i in target.split_whitespace() {
             let mut temp = i;
+            // println!("---------------------");
+            let first = i.chars().next().unwrap();
+            let second_last = i.chars().nth_back(1).unwrap();
+            let last = i.chars().next_back().unwrap();
+            // println!("first: {}", first);
+            // println!("second last: {}", second_last);
+            // println!("last: {}", last);
+            // println!("---------------------");
             for j in i.chars() {
-                if !j.is_alphabetic() {
-                    // check if j is the last char in word
-                    if i.chars().last().unwrap() == j {
+                // check if j is the last char in word
+                if first == j || second_last == j {
+                    if !j.is_alphabetic() {
                         println!("[{}] is removed from [{}]", j, i);
                         // temp = i.trim_matches(|c: char| c == ',' || c == '.' || c == '!' || c == '?');
                         temp = i.trim_matches(|c: char| c == j);
-                    } else {
+                    }
+                } else if last == j {
+                    if !j.is_alphabetic() {
+                        println!("[{}] is removed from [{}]", j, i);
+                        // temp = i.trim_matches(|c: char| c == ',' || c == '.' || c == '!' || c == '?');
+                        temp = i.trim_matches(|c: char| c == j);
+                        break;
+                    }
+                } else {
+                    if !j.is_alphabetic() {
+                        println!("[{}] is removed because {} is no alphabetic", temp, j);
                         temp = "";
+                        break;
                     }
                 }
             }
-            println!("[{}] is add to KWIndex index", temp);
-            self.word.push(temp);
+            if !temp.is_empty() {
+                println!("[{}] is add to KWIndex index", temp);
+                self.word.push(temp);
+            }
         }
         self
     }
