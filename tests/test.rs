@@ -1,4 +1,4 @@
-extern crate kwindex;
+// extern crate kwindex;
 
 #[cfg(test)]
 mod kwindex_tests {

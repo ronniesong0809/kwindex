@@ -9,17 +9,21 @@ This is a Rust based "keyword index" library crate that maintaining an index of 
 
 ## Usages
 
-##### - Make a new empty target words list:
+##### - Use crate to access functions
+extern crate kwindex;
+use kwindex::*;
+
+##### - Make a new empty target words index:
 ```
-let index = kwindex::KWIndex::new();
+let mut index = KWIndex::new();
 ```
 
-##### - Parse text and add valid words to list:
+##### - Parse text and add each valid word to index:
 ```
-let index = index.extend_from_text("Hello world.");
+index = index.extend_from_text("Hello world.");
 ```
 
-##### - Check if it is empty:
+##### - Check if the index is empty:
 ```
 assert_eq!(true, index.is_empty());
 ```
@@ -54,7 +58,7 @@ count_matches('world'): 1
 
 KWIndex { word: ["Hey", "world"] }
 ```
-Everything went well! It parse the text and add to the list without issue, and successfully print its is_empty check, lenght, and matches number.
+Everything went well! It parse the text and add to the list without issue, and successfully print its is_empty check, length, and the number of matches.
 
 ## Test
 To test the library crate, type the command below:

@@ -1,4 +1,4 @@
-extern crate kwindex;
+// extern crate kwindex;
 use kwindex::*;
 
 fn main() {
