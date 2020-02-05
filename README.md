@@ -1,5 +1,6 @@
 # kwindex
 [![Build Status](https://travis-ci.com/ronniesong0809/kwindex.svg?token=ysuqwpSTd1nLYmpB7CY5&branch=master)](https://travis-ci.com/ronniesong0809/kwindex)
+![Rust](https://github.com/ronniesong0809/kwindex/workflows/Rust/badge.svg)
 
 Copyright (c) 2020 Ronnie Song
 
